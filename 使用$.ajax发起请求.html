@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="btnGET">发起GET请求</button>
+    <button id="btnPOST">发起POST请求</button>
+    <script>
+        $(function () {
+            $("#btnGET").on("click", function () {
+                $.ajax({
+                    //请求类型get或post,大小写无所谓
+                    type: "get",
+                    //请求地址
+                    url: "http://www.liulongbin.top:3006/api/getbooks",
+                    //携带参数
+                    data: {
+                        id: 1
+                    },
+                    //成功后的回调函数
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            })
+        })
+
+        $(function () {
+            $("#btnPOST").on("click", function () {
+                $.ajax({
+                    //请求类型get或post
+                    type: "post",
+                    //请求地址
+                    url: "http://www.liulongbin.top:3006/api/addbook",
+                    //携带参数
+                    data: {
+                        bookname: '市集',
+                        author: 'si',
+                        publisher: '安徽出版社'
+                    },
+                    //成功后的回调函数
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

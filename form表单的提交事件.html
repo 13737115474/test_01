@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <form action="/login" id="f1">
+        <input type="text" name="email_or_mobile" />
+        <input type="password" name="password" />
+        <button type="submit">提交</button>
+    </form>
+
+    <script>
+        $(function () {
+            //方法一
+            //监听表单提交事件
+            // $("#f1").submit(function () {
+            //     alert("监听成功1！");
+            //     //阻止表单的默认行为，这里阻止了form标签中action的页面跳转
+            //     e.preventDefault();
+            // })
+
+            //方法二
+            $("#f1").on("submit", function (e) {
+                alert("监听成功2！");
+                //阻止表单的默认行为，这里阻止了form标签中action的页面跳转
+                e.preventDefault();
+                //serialize()获取表单中所有的数据，表单元素必须要有name属性
+                var data = $(this).serialize();
+                console.log(data);
+            })
+        })
+    </script>
+</body>
+
+</html>
